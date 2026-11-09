@@ -130,7 +130,7 @@ function anim(root) { requestAnimationFrame(() => requestAnimationFrame(() => (r
 const cnt = (x, suf) => x == null ? '—' : `<span data-n="${x}">${x}</span>${suf || ''}`;
 let token = null, P = null, pfirst = true;
 const ADM = ['getInit', 'getDash', 'getBroadcast', 'getNotes', 'saveBroadcast', 'backupNow', 'setAutoBackup', 'getBackupInfo', 'startNewLeague'], SECS = ['pub', 'dash', 'enter', 'sch', 'bk', 'rep'];
-const API = 'ضع هنا رابط النشر المنتهي بـ /exec'; // مطلوب فقط عند الاستضافة على GitHub؛ داخل Apps Script يُتجاهل
+const API = 'https://script.google.com/macros/s/AKfycbxgO2xDSYGWcmAK7RcASKzc7dxG4v8_tICJeQSeRv4PHLQFuJtjcwWp6AFYRYDKhx0/exec'; // مطلوب فقط عند الاستضافة على GitHub؛ داخل Apps Script يُتجاهل
 const inGAS = !!(window.google && google.script && google.script.run);
 const call = (f, ...a) => inGAS ? new Promise((ok, no) => google.script.run.withSuccessHandler(ok).withFailureHandler(no)[f](...a))
   : !/^https:\/\/script\.google\.com\//.test(API) ? Promise.reject(new Error('لم يُضبط رابط الخادم (API) في أول السكربت'))
