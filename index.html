@@ -135,7 +135,7 @@ const inGAS = !!(window.google && google.script && google.script.run);
 const call = (f, ...a) => inGAS ? new Promise((ok, no) => google.script.run.withSuccessHandler(ok).withFailureHandler(no)[f](...a))
   : !/^https:\/\/script\.google\.com\//.test(API) ? Promise.reject(new Error('لم يُضبط رابط الخادم (API) في أول السكربت'))
   : rpc(f, a);
-const NETERR = 'تعذّر الاتصال بالخادم: تأكد من رابط /exec، ومن أن النشر Anyone، وأنك أنشأت نسخة نشر جديدة بعد تحديث Code.gs';
+const NETERR = 'https://script.google.com/macros/s/AKfycbxgO2xDSYGWcmAK7RcASKzc7dxG4v8_tICJeQSeRv4PHLQFuJtjcwWp6AFYRYDKhx0/exec';
 function rpc(f, a) {
   const body = JSON.stringify({fn: f, args: a}), unwrap = j => { if (!j.ok) throw new Error(j.error); return j.data; }, json = r => r.json().catch(() => { throw new Error(NETERR); });
   return fetch(API, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body}).then(json).then(unwrap)
